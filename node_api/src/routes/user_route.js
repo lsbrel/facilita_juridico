@@ -19,13 +19,13 @@ module.exports = (app) => {
 
   /** ATUALIZA DADOS DE UM USUARIO */
   app.put("/user/:id", (req, res) => {
-    app.src.controllers.user_controller.post(app, req, res);
+    app.src.controllers.user_controller.put(app, req, res);
   });
   /** ATUALIZA DADOS DE UM USUARIO */
 
   /** DELETAR REGISTRO DE USUARIO */
   app.delete("/user/:id", (req, res) => {
-    app.src.controllers.user_controller.post(app, req, res);
+    app.src.controllers.user_controller.delete(app, req, res);
   });
   /** DELETAR REGISTRO DE USUARIO */
 };
