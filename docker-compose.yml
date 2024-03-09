@@ -3,6 +3,7 @@ services:
     image: postgres
     volumes:
       - ./postgres_db/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+      - ./postgres_db/seeder_db.sql:/docker-entrypoint-initdb.d/seeder_db.sql
     environment:
       POSTGRES_PASSWORD: "senha123"
     ports:

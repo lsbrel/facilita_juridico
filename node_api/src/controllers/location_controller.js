@@ -11,9 +11,9 @@ module.exports.post = (app, req, res) => {
 };
 
 module.exports.put = (app, req, res) => {
-  return res.send("PUT");
+  return res.send("PUT" + req.params.id);
 };
 
 module.exports.delete = (app, req, res) => {
-  return res.send("DELETE");
+  return res.send("DELETE" + req.params.id);
 };
