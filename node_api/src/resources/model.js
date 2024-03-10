@@ -1,4 +1,3 @@
-const { __formatNumValues } = require("../models/user");
 const { getClient } = require("./db_connector");
 
 class Model {
