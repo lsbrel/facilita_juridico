@@ -9,6 +9,10 @@ consign()
   .then("src/controllers")
   .into(app);
 
+/** SUPORTE A JSON */
+app.use(express.json());
+/** SUPORTE A JSON */
+
 /** ROTAS NAO ENCONTRADAS */
 app.all("*", (req, res) => {
   res.send("notFound");

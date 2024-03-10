@@ -1,3 +1,5 @@
+const bodyparser = require("body-parser");
+
 module.exports = (app) => {
   /** BUSCA TODOS OS DADOS */
   app.get("/user", (req, res) => {
@@ -12,13 +14,13 @@ module.exports = (app) => {
   /** BUSCA DADOS DE UM ID ESPECIFICO */
 
   /** INSERE DADOS DE USUARIO EM BANCO */
-  app.post("/user", (req, res) => {
+  app.post("/user", bodyparser.json(), (req, res) => {
     app.src.controllers.user_controller.post(app, req, res);
   });
   /** INSERE DADOS DE USUARIO EM BANCO */
 
   /** ATUALIZA DADOS DE UM USUARIO */
-  app.put("/user/:id", (req, res) => {
+  app.put("/user/:id", bodyparser.json(), (req, res) => {
     app.src.controllers.user_controller.put(app, req, res);
   });
   /** ATUALIZA DADOS DE UM USUARIO */
