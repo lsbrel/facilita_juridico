@@ -16,3 +16,4 @@ class Location extends Model {
 }
 
 module.exports = new Location();
+module.exports.requestAttrs = () => ["coordinates", "user_id"];
