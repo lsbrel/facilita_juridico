@@ -1,5 +1,7 @@
 const { Client } = require("pg");
-require("dotenv").config();
+require("dotenv").config({
+  path: "./node_api/.env"
+});
 
 module.exports.getClient = async () => {
   const client = new Client({
@@ -10,8 +12,7 @@ module.exports.getClient = async () => {
     database: process.env.PG_DATABASE,
   });
 
-  try {
-    await client.connect();
-    return client;
-  } catch {}
+  await client.connect();
+  return client;
+
 };

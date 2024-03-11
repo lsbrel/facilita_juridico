@@ -1,7 +1,6 @@
 const express = require("express");
 const consign = require("consign");
 const cors = require("cors");
-const user = require("./src/models/user");
 
 const app = express();
 
@@ -21,7 +20,6 @@ consign({ cwd: "node_api/src" })
 
 /** ROTAS NAO ENCONTRADAS */
 app.all("*", async (req, res) => {
-  res.send(await user.all());
   res.send("rota nao existe");
 });
 /** ROTAS NAO ENCONTRADAS */
