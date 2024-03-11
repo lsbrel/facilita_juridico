@@ -25,11 +25,11 @@ class Model {
     const query = await this.client.query(
       `INSERT INTO ${
         this.table
-      }(${this.__formatAttrs()}, created_at, updated_at) VALUES(${this.__formatNumValues()})`,
+      }(${this.__formatAttrs()}, created_at, updated_at) VALUES(${this.__formatNumValues()}) RETURNING id`,
       this.__insertValues(data)
     );
 
-    return query;
+    return query.rows;
   }
 
   async update(data, id) {

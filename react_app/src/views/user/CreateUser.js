@@ -9,8 +9,10 @@ export default function () {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
+  const [coordX, setX] = React.useState("");
+  const [coordY, setY] = React.useState("");
 
-  const postData = async () => {
+  const registerUser = async () => {
     if (__isEmpty()) {
       setEmpty(true);
       return;
@@ -23,7 +25,7 @@ export default function () {
       })
       .then((res) => {
         if (res.data.status) {
-          toast.success(res.data.messageCode);
+          registerCoordinates(res.data.content[0].id);
         }
       })
       .catch((err) => {
@@ -32,6 +34,22 @@ export default function () {
       .finally(() => {
         __clearData();
         setEmpty(false);
+      });
+  };
+
+  const registerCoordinates = async (id) => {
+    await axios
+      .post("http://127.0.0.1:3010/location", {
+        coordinates: JSON.stringify({ x: coordX, y: coordY }),
+        user_id: id,
+      })
+      .then((res) => {
+        if (res.data.status) {
+          toast.success(res.data.messageCode);
+        }
+      })
+      .catch((err) => {
+        console.log("error on saving data => " + err);
       });
   };
 
@@ -47,6 +65,8 @@ export default function () {
     setEmail("");
     setName("");
     setName("");
+    setX("");
+    setY("");
   };
 
   return (
@@ -71,10 +91,22 @@ export default function () {
           value={phone}
           callbackFunction={(value) => setPhone(value)}
         />
+        <InputUser
+          label="Coordenada X"
+          placeholder="0"
+          value={coordX}
+          callbackFunction={(value) => setX(value)}
+        />
+        <InputUser
+          label="Coordenada Y"
+          placeholder="1"
+          value={coordY}
+          callbackFunction={(value) => setY(value)}
+        />
         <p className="text-red-600 text-sm mt-0 mb-5">
           {empty ? "Campos nao podem estar vazios" : ""}
         </p>
-        <ButtonUser label="Cadastrar" callbackFunction={postData} />
+        <ButtonUser label="Cadastrar" callbackFunction={registerUser} />
       </div>
       <Toaster />
     </div>

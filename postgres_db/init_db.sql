@@ -14,7 +14,7 @@ CREATE TABLE "tb_user" (
 CREATE TABLE "tb_location" (
     "id" SERIAL PRIMARY KEY,
     "coordinates" JSONB,
-    "user_id" INT REFERENCES tb_user(id),
+    "user_id" INT REFERENCES tb_user(id) ON DELETE CASCADE,
     "created_at" DATE NOT NULL,
     "updated_at" DATE NOT NULL
 );

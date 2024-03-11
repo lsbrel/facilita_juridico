@@ -81,7 +81,7 @@ module.exports.remove = async (app, req, res) => {
 
     /** RETORNANDO DADOS EM CASO DE SUCESSO */
     return res.status(200).json(apiResponse(true, "dataDeleteSuccess", data));
-    /** RETORNANDO DADOS EM CASO DE SUCESSO */
+  /** RETORNANDO DADOS EM CASO DE SUCESSO */
   } catch (err) {
     return res.status(500).json(apiResponse(false, "dataDeleteFailed"));
   }

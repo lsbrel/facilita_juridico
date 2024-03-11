@@ -9,7 +9,7 @@ module.exports.index = async (app, req, res) => {
 
     /** CASO DADOS VOLTEM VAZIOS */
     if (data.length == 0) {
-      return res.status(404).json(apiResponse(false, "dataNotFound"));
+      return res.status(200).json(apiResponse(false, "dataNotFound"));
     }
     /** CASO DADOS VOLTEM VAZIOS */
 
@@ -29,7 +29,7 @@ module.exports.show = async (app, req, res) => {
 
     /** DADOS VAZIOS */
     if (data.length == 0) {
-      return res.status(404).json(apiResponse(false, "dataNotFound"));
+      return res.status(200).json(apiResponse(false, "dataNotFound"));
     }
     /** DADOS VAZIOS */
 
@@ -77,7 +77,7 @@ module.exports.put = async (app, req, res) => {
 module.exports.remove = async (app, req, res) => {
   try {
     /** DELETANDO DADOS */
-    const data = await location.destroy(req.params.id);
+    const data = await user.destroy(req.params.id);
     /** DELETANDO DADOS */
 
     /** RETORNANDO DADOS EM CASO DE SUCESSO */

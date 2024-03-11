@@ -1,6 +1,6 @@
 const { Client } = require("pg");
 require("dotenv").config({
-  path: "./node_api/.env"
+  // path: "./node_api/.env",
 });
 
 module.exports.getClient = async () => {
@@ -14,5 +14,4 @@ module.exports.getClient = async () => {
 
   await client.connect();
   return client;
-
 };

@@ -12,10 +12,11 @@ app.use(express.json());
 app.use(cors());
 /** SUPORTE CORS */
 
-consign({ cwd: "node_api/src" })
-  .include("/routes")
-  .then("/models")
-  .then("/controllers")
+// consign({ cwd: "node_api/src" })
+consign()
+  .include("src/routes")
+  .then("src/models")
+  .then("src/controllers")
   .into(app);
 
 /** ROTAS NAO ENCONTRADAS */
