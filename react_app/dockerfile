@@ -5,8 +5,8 @@ WORKDIR /usr/app
 COPY . .
 COPY react_app/package.json .
 
-RUN npm update
-RUN npm upgrade
+# RUN npm update
+# RUN npm upgrade
 RUN npm install
 
 

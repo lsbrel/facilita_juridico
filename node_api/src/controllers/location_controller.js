@@ -97,9 +97,6 @@ module.exports.calcularRota = async (app, req, res) => {
       right join "tb_location" on user_id = tb_user.id
       order by distancia_maxima
   `);
-  const best_route = traceRouter(data, 0, 0);
-  return res.send(best_route);
-  return res
-    .status(200)
-    .json(apiResponse(true, "traceRouteSuccess", best_route));
+  // const best_route = traceRouter(data, 0, 0);
+  return res.status(200).json(apiResponse(true, "traceRouteSuccess", data));
 };

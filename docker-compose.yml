@@ -1,5 +1,4 @@
 services:
-
   postgres:
     image: postgres
     volumes:
@@ -11,22 +10,27 @@ services:
       - "5432:5432"
     container_name: db-pg
 
-  # backend:
-  #   depends_on:
-  #     - postgres
-  #   image: node_api
-  #   build:
-  #     dockerfile: ./node_api/dockerfile
-  #   ports:
-  #     - "3010:3010"
-  #   command: ["sh", "-c", "dockerize -wait tcp://db-pg:5432 -timeout 60s && node node_api/app.js"]
+  backend:
+    depends_on:
+      - postgres
+    image: node_api
+    build:
+      dockerfile: ./node_api/dockerfile
+    ports:
+      - "3010:3010"
+    command:
+      [
+        "sh",
+        "-c",
+        "dockerize -wait tcp://db-pg:5432 -timeout 60s && node node_api/app.js",
+      ]
 
-  # frontend:
-  #   depends_on:
-  #     - backend
-  #   image: react_app
-  #   build:
-  #     dockerfile: ./react_app/dockerfile
-  #   ports:
-  #     - "3000:3000"
-  #   command: ["sh", "-c", "cd ./react_app && npm run start"]
+  frontend:
+    depends_on:
+      - backend
+    image: react_app
+    build:
+      dockerfile: ./react_app/dockerfile
+    ports:
+      - "3000:3000"
+    command: ["sh", "-c", "cd ./react_app && npm run start"]
