@@ -1,5 +1,5 @@
 module.exports.traceRouter = (grid, startX, startY) => {
-
+  // nao houve tempo para a implementacao
 };
 
 const isValidCoordinate = (x, y, grid) => {
