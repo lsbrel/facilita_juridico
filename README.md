@@ -6,6 +6,11 @@
     <li> Docker</li>
     <li> Docker Compose</li>
 </ul>
+<p>
+    Para rodar o sistema basta executar o comando: docker-compose up dentro da pasta raiz
+</p>
+
+
 <hr />
 
 <h5>React_app<h5>
