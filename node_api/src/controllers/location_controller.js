@@ -73,7 +73,7 @@ module.exports.put = async (app, req, res) => {
 };
 
 /** VALIDAR INPUTS */
-module.exports.delete = async (app, req, res) => {
+module.exports.remove = async (app, req, res) => {
   try {
     /** DELETANDO DADOS */
     const data = await location.destroy(req.params.id);
