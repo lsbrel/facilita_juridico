@@ -1,4 +1,4 @@
-const Model = require("../resources/model");
+const Model = require("../resources/model.js");
 
 class User extends Model {
   /**

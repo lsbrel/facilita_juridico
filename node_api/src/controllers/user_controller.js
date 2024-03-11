@@ -1,5 +1,5 @@
-const user = require("../models/user");
-const { apiResponse } = require("../resources/response");
+const user = require("../models/user.js");
+const { apiResponse } = require("../resources/response.js");
 
 module.exports.index = async (app, req, res) => {
   try {

@@ -1,4 +1,4 @@
-const { getClient } = require("./db_connector");
+const { getClient } = require("./db_connector.js");
 
 class Model {
   constructor() {

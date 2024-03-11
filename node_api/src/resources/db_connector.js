@@ -10,6 +10,8 @@ module.exports.getClient = async () => {
     database: process.env.PG_DATABASE,
   });
 
-  await client.connect();
-  return client;
+  try {
+    await client.connect();
+    return client;
+  } catch {}
 };

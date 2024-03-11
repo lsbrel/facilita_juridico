@@ -1,5 +1,5 @@
 const bodyparser = require("body-parser");
-const { bodyValidator, paramsValidator } = require("../requests/user_request");
+const { bodyValidator, paramsValidator } = require("../requests/user_request.js");
 
 module.exports = (app) => {
   /** BUSCA TODOS OS DADOS */

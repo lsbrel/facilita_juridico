@@ -1,6 +1,7 @@
 const express = require("express");
 const consign = require("consign");
 const cors = require("cors");
+const user = require("./src/models/user");
 
 const app = express();
 
@@ -12,15 +13,16 @@ app.use(express.json());
 app.use(cors());
 /** SUPORTE CORS */
 
-consign()
-  .include("src/routes")
-  .then("src/models")
-  .then("src/controllers")
+consign({ cwd: "node_api/src" })
+  .include("/routes")
+  .then("/models")
+  .then("/controllers")
   .into(app);
 
 /** ROTAS NAO ENCONTRADAS */
-app.all("*", (req, res) => {
-  res.send("notFound");
+app.all("*", async (req, res) => {
+  res.send(await user.all());
+  res.send("rota nao existe");
 });
 /** ROTAS NAO ENCONTRADAS */
 

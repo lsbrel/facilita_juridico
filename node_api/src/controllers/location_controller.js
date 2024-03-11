@@ -1,5 +1,5 @@
-const location = require("../models/location");
-const { apiResponse } = require("../resources/response");
+const location = require("../models/location.js");
+const { apiResponse } = require("../resources/response.js");
 
 module.exports.index = async (app, req, res) => {
   try {

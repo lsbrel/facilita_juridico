@@ -1,5 +1,5 @@
-const { apiResponse } = require("../resources/response");
-const { requestAttrs } = require("../models/location");
+const { apiResponse } = require("../resources/response.js");
+const { requestAttrs } = require("../models/location.js");
 
 module.exports.paramsValidator = (req, res, next) => {
   if (isNaN(req.params.id)) {
