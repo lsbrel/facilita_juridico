@@ -94,11 +94,11 @@ module.exports.calcularRota = async (app, req, res) => {
   // );
   const data =
     await location.sql(`select tb_user.id, tb_user.name, tb_location.coordinates,(tb_location.coordinates ->> 'x')::numeric + (tb_location.coordinates ->> 'y')::numeric as distancia_maxima from "tb_user"
-      left join "tb_location" on user_id = tb_user.id
+      right join "tb_location" on user_id = tb_user.id
       order by distancia_maxima
   `);
-  const best_route = traceRouter(data);
-
+  const best_route = traceRouter(data, 0, 0);
+  return res.send(best_route);
   return res
     .status(200)
     .json(apiResponse(true, "traceRouteSuccess", best_route));

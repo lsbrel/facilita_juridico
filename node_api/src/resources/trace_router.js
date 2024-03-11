@@ -1,10 +1,7 @@
-module.exports.traceRouter = (clientes, startX, startY) => {
-  let route = [clientes[0]];
-  let lastDistance = 0;
+module.exports.traceRouter = (grid, startX, startY) => {
 
-  for (let i = 1; i < clientes.length; i++) {
-    route[i] = clientes[i];
-  }
+};
 
-  return route;
+const isValidCoordinate = (x, y, grid) => {
+  return x >= 0 && x < grid.length && y >= 0 && y < grid[0].length;
 };
