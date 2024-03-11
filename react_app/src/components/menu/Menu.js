@@ -1,20 +1,19 @@
-import MenuItem from "./widgets/MenuItem";
-import MenuItemTitle from "./widgets/MenuItemTitle";
-import MenuTitle from "./widgets/MenuTitle";
+import { Menu, MenuItem, Sidebar, SubMenu } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
 
 export default function () {
   return (
-    <aside className="bg-slate-700 shadow-lg text-white h-screen w-2/12">
-      {/* TITULO */}
-      <MenuTitle title={"Facilita juridico"} />
-      {/* TITULO */}
-
-      {/* LISTA COM MENU LATERAL */}
-      <ul className="flex flex-col gap-2 mt-4">
-        <MenuItem route={"/user"} label={"Usarios"} />
-        <MenuItem route={"/route"} label={"Calcular rota"} />
-      </ul>
-      {/* LISTA COM MENU LATERAL */}
-    </aside>
+    <Sidebar className="h-screen shadow-xl">
+      <Menu>
+        <MenuItem className="text-xl text-center p-2 mb-4">
+          Facilita juridico
+        </MenuItem>
+        <SubMenu label="Usuarios">
+          <MenuItem component={<Link to={"/create-user"} />}> Criar</MenuItem>
+          <MenuItem component={<Link to={"/list-user"} />}>Listar</MenuItem>
+        </SubMenu>
+        <MenuItem component={<Link to={"/route"} />}>Calcular Rota</MenuItem>
+      </Menu>
+    </Sidebar>
   );
 }
