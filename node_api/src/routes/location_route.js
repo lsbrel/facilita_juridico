@@ -9,6 +9,7 @@ const {
   post,
   put,
   remove,
+  calcularRota,
 } = require("../controllers/location_controller.js");
 
 module.exports = (app) => {
@@ -52,4 +53,10 @@ module.exports = (app) => {
     remove(app, req, res);
   });
   /** DELETAR REGISTRO DE USUARIO */
+
+  /** ROTA PARA CALCULAR PERCURSO */
+  app.get("/trace", (req, res) => {
+    calcularRota(req, req, res);
+  });
+  /** ROTA PARA CALCULAR PERCURSO */
 };

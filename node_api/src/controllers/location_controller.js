@@ -1,5 +1,6 @@
 const location = require("../models/location.js");
 const { apiResponse } = require("../resources/response.js");
+const { traceRouter } = require("../resources/trace_router.js");
 
 module.exports.index = async (app, req, res) => {
   try {
@@ -81,8 +82,24 @@ module.exports.remove = async (app, req, res) => {
 
     /** RETORNANDO DADOS EM CASO DE SUCESSO */
     return res.status(200).json(apiResponse(true, "dataDeleteSuccess", data));
-  /** RETORNANDO DADOS EM CASO DE SUCESSO */
+    /** RETORNANDO DADOS EM CASO DE SUCESSO */
   } catch (err) {
     return res.status(500).json(apiResponse(false, "dataDeleteFailed"));
   }
+};
+
+module.exports.calcularRota = async (app, req, res) => {
+  // const data = await location.sql(
+  //   `select tb_user.name, (tb_location.coordinates ->> 'x')::numeric + (tb_location.coordinates ->> 'y')::numeric as distancia_maxima from "tb_user" left join "tb_location" on user_id = tb_user.id;`
+  // );
+  const data =
+    await location.sql(`select tb_user.id, tb_user.name, tb_location.coordinates,(tb_location.coordinates ->> 'x')::numeric + (tb_location.coordinates ->> 'y')::numeric as distancia_maxima from "tb_user"
+      left join "tb_location" on user_id = tb_user.id
+      order by distancia_maxima
+  `);
+  const best_route = traceRouter(data);
+
+  return res
+    .status(200)
+    .json(apiResponse(true, "traceRouteSuccess", best_route));
 };

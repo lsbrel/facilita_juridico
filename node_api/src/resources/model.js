@@ -49,12 +49,8 @@ class Model {
     return query.rows;
   }
 
-  async sql(query, values = []) {
-    if (values.length == 0) {
-      const query = await this.client.query(query);
-    } else {
-      const query = await this.client.query(query, values);
-    }
+  async sql(data) {
+    const query = await this.client.query(data);
     return query.rows;
   }
 
