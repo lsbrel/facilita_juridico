@@ -14,26 +14,17 @@ Este projeto foi desenvolvido como parte do processo seletivo para a empresa Fac
 
 ## Funcionalidades Principais
 
-- Cadastro de clientes, advogados, processos e audiências.
+- Cadastro de clientes / CRUD.
 - Listagem e visualização detalhada de clientes, advogados, processos e audiências.
 - Pesquisa e filtragem de clientes, advogados, processos e audiências.
 - Interface amigável e responsiva para uma experiência de usuário agradável em dispositivos desktop e móveis.
 
-## Pré-requisitos
-
-- Node.js e npm instalados globalmente.
-- Banco de dados Postgres configurado e acessível.
 
 ## Instalação
 
 1. Clone o repositório: `git clone https://github.com/seu-usuario/nome-do-repositorio.git`
 2. Navegue até o diretório do projeto: `cd nome-do-repositorio`
-3. Instale as dependências do backend: `npm install`
-4. Navegue até o diretório do frontend: `cd frontend`
-5. Instale as dependências do frontend: `npm install`
-6. Volte ao diretório raiz do projeto: `cd ..`
-7. Execute o backend: `npm start`
-8. Execute o frontend: `npm start`
+3. Execute o comando docker compose up
 
 ## Contribuindo
 
